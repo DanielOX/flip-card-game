@@ -1,22 +1,37 @@
-.App {
-  text-align: center;
+body{
+    overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
+.App-grid {
+    margin-top:25px;
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+.profile-column {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 25% 50%;
+    grid-row-gap:15%;
+}
+.profile-column > p {
+    text-align:center;
+}
+.deck-grid {
+    display:grid;
+    grid-template-columns: repeat(13,1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-custom{
+    text-align:center;
+    font-size:16px;
 }
 
-.App-link {
-  color: #09d3ac;
+.remaining-cards-grid{
+    display: grid;
+    grid-template-columns: repeat(4,.1fr);
+    grid-column-gap: 1px;
+    align-items: center;
+    justify-content: center;
 }
