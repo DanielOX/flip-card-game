@@ -13,7 +13,5 @@
 ### Purpose
 
 Al-aziz universty student Final Year Project
-<<<<<<< HEAD
 
-=======
->>>>>>> 6617b2a1352b70d69863a2e676dcc6d028f1cb04
+Created with <3 By <a href="https://github.com/DanielOX">@DanielOX</a>
