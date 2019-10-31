@@ -1,5 +1,8 @@
 import React from 'react'
+import Scoreboard from './Scoreboard';
 import './Overlay.css'
+
+
 export default function Overlay(props) {
     return (
         <div className="overlay">
@@ -16,11 +19,17 @@ export default function Overlay(props) {
                 props.should_retry && 
 
                 (
-                <button className="btn btn-primary" >
+                <button onClick={() => window.location.reload()} className="btn btn-primary" >
                         Wanna Try Again ?
                 </button>
                 )
             }
+            <br />
+            <br />
+            <br />
+
+            <Scoreboard />
+
           </div>   
         </div>
     )

@@ -15,3 +15,11 @@
     text-align:center;
     color:white;
 }
+
+.overlay button {
+    padding:12px 24px;
+    border:none;
+    background-color:maroon;
+    color:white;
+    text-align: center;
+}

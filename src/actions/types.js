@@ -6,6 +6,9 @@ export const FOLD_ONE  = "FOLD_ONE"
 export const GET_SHUFFLED_CARDS_LIST = "SHUFFLED"
 export const HIDE_WRONGED_GUESSED = "HIDE_WRONGED_GUESSED"
 export const CHECK_IF_GAME_OVER = "CHECK_IF_GAME_OVER"
+export const TIME_UP = "TIME_UP"
+
+
 
 
 // Match Action

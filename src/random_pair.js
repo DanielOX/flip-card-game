@@ -16,6 +16,6 @@ export default function random_pair(no_of_cards = 13,groups=4) {
 
     let shuffle = _.shuffle(concat)
     
-    shuffle = shuffle.map((img,index) => ({id:index+1,is_fliped:true,img:img+'.png',name:`card-${img}`,component_classes:['flip-card'],is_disabled:false}))
+    shuffle = shuffle.map((img,index) => ({id:index+1,is_fliped:true,img:img+'.png',name:`card-${img}`,component_classes:['flip-card'],is_disabled:true}))
     return {shuffle,sample}
 }

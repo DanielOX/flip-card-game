@@ -1,5 +1,6 @@
 body{
     overflow: hidden;
+    background-color:#fff;
 }
 
 .App-grid {
@@ -9,9 +10,10 @@ body{
 }
 .profile-column {
     display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: 25% 50%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% 1% 50% ;
     grid-row-gap:15%;
+    justify-content: center;
 }
 .profile-column > p {
     text-align:center;
@@ -20,7 +22,7 @@ body{
     display:grid;
     grid-template-columns: repeat(13,1fr);
     grid-column-gap: 2px;
-    grid-row-gap: 30px;
+    grid-row-gap: 20px;
 }
 
 .header-custom{

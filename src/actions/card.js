@@ -8,7 +8,8 @@ import {
     PUSH_NEW_GUESS,
     POP_NEW_GUESS,
     CHECK_IF_GAME_OVER,
-    MATCH
+    MATCH,
+    TIME_UP
  } from './types'
 
 // UNFOLD_ALL_CARDS
@@ -73,5 +74,12 @@ export const hide_wrong_guessed = () => {
 export const game_over_check = () => {
     return {
         type:CHECK_IF_GAME_OVER
+    }
+}
+
+// Time Up
+export const time_up = () => {
+    return {
+        type:TIME_UP
     }
 }

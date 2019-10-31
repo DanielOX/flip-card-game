@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from './components/Card'
+import Timer from './components/Timer'
 import Overlay from './components/Overlay'
+import Scoreboard from './components/Scoreboard';
 
 // App Configuration
 
@@ -8,7 +10,7 @@ import { foldingTime,loadingTime } from './config/config'
 
 
 // Actions
-import { shuffle, unfold_all, fold_all,game_over_check } from './actions/card'
+import { shuffle, unfold_all, fold_all,game_over_check,game_over } from './actions/card'
 import { connect } from 'react-redux';
 
 // Styling
@@ -18,8 +20,10 @@ import './App.css'
 class App extends React.Component {
 
   state = {
-    isLoading:true
+    isLoading:true,
   }
+
+
 
   componentDidUpdate()
   {
@@ -27,14 +31,18 @@ class App extends React.Component {
   }
  
 
- componentWillMount() {
-    this.props.dispatch(shuffle())
-}
-  componentDidMount(){
-      this.setState({ isLoading:false },() => {
-        setTimeout(() => {this.props.dispatch(fold_all())},foldingTime)
-      })
+  componentWillMount() 
+  {
+      this.props.dispatch(shuffle())
+  }
 
+  componentDidMount()
+  { 
+      setTimeout(() => {
+        this.setState({ isLoading:false },() => {
+          setTimeout(() => {this.props.dispatch(fold_all())},foldingTime)
+        })
+      },loadingTime)
   }
 
   render()
@@ -43,20 +51,17 @@ class App extends React.Component {
     return (
       <div>
 
-        
-
-
          <div className="App App-grid">
 
            {
-            this.state.isLoading && <Overlay should_load={true} message="Welcome, The Game Will Start Shortly!...."/>
+            this.state.isLoading && <Overlay  should_load={true} message="Welcome, The Game Will Start Shortly!...."/>
            }
 
            {
-             this.props.game_over && <Overlay should_load={false} message="Congrats u won!" should_retry={true} />
+             this.props.game_over && <Overlay should_load={false} message="Game Over" should_retry={true} />
            }
            {/* DECK COLUMN*/}
- 
+           
             <div className="deck-grid">
               {
                 this.props.cards.length > 0 && this.props.cards.map((card,index) => 
@@ -76,18 +81,17 @@ class App extends React.Component {
 
                    {/*   Correctly Guessed Cards  */}
 
-
                     <div>
-                      <h5 className="header-custom">
-                        Correctly Guessed
-                      </h5>
-                      <div className="remaining-cards-grid">
-                        {
-                         this.props.correct.length == 0 ? 'No Guesses' : this.props.correct.map(card => <img src={`/cards/${card.replace('card-','')}.png`}  style={{width:'40px',height:'auto'}} />)
-                        }
 
-                        </div> 
+                      {  <center><Timer  isPlaying={this.props.should_timer_start} /></center> }
+
                     </div>
+                  <div>
+                    <center>
+                    <Scoreboard />
+                    </center>
+
+                  </div>
 
                     {/*   Remaining Cards  */}
                     <div>
@@ -117,7 +121,8 @@ const mapStateToProps = (state,ownProps) => {
     cards:state.game.cards,
     correct:state.game.correct,
     to_be_guessed:state.game.to_be_guessed,
-    game_over:state.game.game_over
+    game_over:state.game.game_over,
+    should_timer_start:state.game.should_timer_start
   }
 }
 export default connect(mapStateToProps)(App) ;
